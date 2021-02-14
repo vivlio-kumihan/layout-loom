@@ -1,0 +1,19 @@
+{
+  "@context": [
+    "https://schema.org",
+    "https://www.w3.org/ns/pub-context"
+  ],
+  "type": "Book",
+  "conformsTo": "https://github.com/vivliostyle/vivliostyle-cli",
+  "author": "高広信之 <takahiro@kumihan.com>",
+  "dateModified": "2021-02-14T09:29:11.492Z",
+  "name": "css_syntax",
+  "readingOrder": [
+    {
+      "url": "_sf_columns.html",
+      "title": "CSS Multi-column Layout Module Level 1"
+    }
+  ],
+  "resources": [],
+  "links": []
+}

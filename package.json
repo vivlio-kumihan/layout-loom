@@ -1,0 +1,22 @@
+{
+  "name": "css-syntax",
+  "description": "css_syntax",
+  "version": "0.0.0",
+  "author": "高広信之 <takahiro@kumihan.com>",
+  "scripts": {
+    "build:pdf": "vivliostyle build",
+    "build:css": "sass i-theme/scss/app.scss i-theme/theme.css",
+    "build": "run-s build:css build:pdf",
+    "preview": "vivliostyle preview",
+    "watch:css": "sass --watch i-theme/scss/app.scss i-theme/theme.css",
+    "watch": "run-p watch:css preview"
+  },
+  "dependencies": {
+    "@vivliostyle/cli": "next",
+    "@vivliostyle/theme-techbook": "^0.2.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.32.7"
+  },
+  "license": "AGPL-3.0",
+  "private": true
+}
