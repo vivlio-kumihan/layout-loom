@@ -6,7 +6,7 @@ module.exports = {
   theme: 'i-theme/theme.css', // .css or local dir or npm package. default to undefined.
   // entryContext: './manuscripts', // default to '.' (relative to `vivliostyle.config.js`).
   entry: [
-    '_sf_columns.md', // `title` is automatically guessed from the file (frontmatter > first heading).
+    '_sf_Multi-column-Layout.md', // `title` is automatically guessed from the file (frontmatter > first heading).
     // {
     //   path: 'epigraph.md',
     //   title: 'Epigraph', // title can be overwritten (entry > file),
