@@ -1,6 +1,6 @@
 # Css Syntax
 
-W3CのCSSリファレンスをDeepをを使って自動翻訳したものを転載する。
+Deepを使って自動翻訳した、W3CのCSSリファレンスを転載する。
 
 > created by [create-book](https://github.com/vivliostyle/create-book).
 
