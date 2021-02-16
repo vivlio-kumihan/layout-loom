@@ -25,9 +25,110 @@ body { columns: 2 12em }</code></pre><p>このモジュールで導入された�
   column-rule-color: black;
 }</code></pre><p>column-fillとcolumn-spanプロパティは、スタイルシートに複数列レイアウトの視覚的表現の幅を与えます。</p></section><section id="例6"><h4>例6</h4><p>この例では、列はバランスがとれている、つまりほぼ同じ長さになるように設定されています。また、h2 要素はすべての列にまたがるように設定されています。</p><pre class="language-text"><code class="language-text">div { column-fill: balance }
 h2 { column-span: all }</code></pre><p>この仕様では、10個の新しいプロパティを導入していますが、そのすべてが上記の例で使用されています。</p><p>すべての列プロパティが初期値を持つ場合、要素のレイアウトは、1つの列だけを持つ複数列レイアウトと同じになります。</p></section><section id="例7"><h4>例7</h4><blockquote>
-<p>列の段間（斜めのハッチング）と列の規則は、パディング（十字のハッチング）を持つ複数列コンテナのこのサンプルのレンダリングで示されています。ハッチングされた部分は、説明のためだけに存在しています。実際の実装では、これらの領域は背景によって決定されます。2 番目の画像は、列規則を持つ複数列コンテナのレンダリングを示しています。</p>
-</blockquote><p><figure><img src="./assets/img/fig01_1_initial-example.svg" alt="A multi-column layout with the non-visible column-span and padding inside the multicol container "><figcaption>A multi-column layout with the non-visible column-span and padding inside the multicol container </figcaption></figure>
-<figure><img src="./assets/img/fig01_2invisible-elements.svg" alt="link"><figcaption>link</figcaption></figure>
-<figure><img src="./assets/img/fig02_initial-example-b.svg" alt="The same layout as in the first image, as it would be displayed by an implementation."><figcaption>The same layout as in the first image, as it would be displayed by an implementation.</figcaption></figure></p><!-- ![図n](./foo.png){width=xxx} --></section></section></section>
+<p>列の段間（斜めのハッチング）と列のルーラー（定規）は、パディング（十字のハッチング）を持つ複数列コンテナのこのサンプルのレンダリングで示されています。ハッチングされた部分は、説明のためだけに存在しています。実際の実装では、これらの領域は背景によって決定されます。2番目の画像は、列のルーラー（定規）を持つ複数列コンテナのレンダリングを示しています。</p>
+</blockquote><p><figure><img src="./assets/img/fig01_1_initial-example.svg" alt="figure1 A multi-column layout with the non-visible column-span and padding inside the multicol container "><figcaption>figure1 A multi-column layout with the non-visible column-span and padding inside the multicol container </figcaption></figure>
+<figure><img src="./assets/img/fig01_2invisible-elements.svg" alt="figure1-2"><figcaption>figure1-2</figcaption></figure>
+<figure><img src="./assets/img/fig02_initial-example-b.svg" alt="figure2 The same layout as in the first image, as it would be displayed by an implementation."><figcaption>figure2 The same layout as in the first image, as it would be displayed by an implementation.</figcaption></figure></p><!-- ![図n](./foo.png){width=xxx} --></section><section id="11-値の定義"><h3>1.1. 値の定義</h3><p>本仕様は、[CSS-VALUES-3]の値定義構文を用いて、[CSS21]のCSSプロパティ定義規定に従う。本仕様で定義されていない値の型は、CSS Values &#x26; Units [CSS-VALUES-3]で定義されている。他のCSSモジュールと組み合わせることで、これらの値型の定義が拡張されることがある。</p><p>定義に列挙されているプロパティ固有の値に加えて、本仕様で定義されているすべてのプロパティは、CSS全体のキーワードをプロパティ値としても受け入れる。可読性のために、それらは明示的に繰り返していない。</p></section><section id="2-マルチカラムモデル"><h3>2. マルチカラムモデル</h3><p>column-width または column-count プロパティが auto でない要素は、マルチカラムコンテナ（略して multicol コンテナ）を確立し、マルチカラムレイアウトのためのコンテナとして機能する。</p><p>従来のCSSボックス・モデルでは、要素の内容は対応する要素のコンテンツ・ボックスに流れ込みます。マルチカラム・レイアウトでは、カラム・ボックス（略してカラム）と呼ばれる匿名の断片化コンテナで形成された断片化コンテキストが導入されます。これらのカラム・ボックスは、マルチカラム・コンテナのコンテンツが流れる独立したブロック・フォーマット・コンテキストを確立し、その非配置子要素のための包含ブロックを形成します。</p><section id="例8"><h4>例8</h4><blockquote>
+<p>この例では、このようなルールで画像の幅を設定しています。</p>
+</blockquote><pre class="language-text"><code class="language-text">img { 
+  display: block. 
+  width: 100%. 
+}</code></pre><blockquote>
+<p>カラムボックスが新しいブロックフォーマットのコンテキストを作成することを考えると、幅はカラムボックスに対して相対的に計算されます。そのため、画像がカラムボックスからはみ出すことはありません。</p>
+</blockquote><p><figure><img src="./assets/img/fig03_image-inside-column.svg" alt="figure3 画像は、表示されるカラムボックスによって拘束されます。"><figcaption>figure3 画像は、表示されるカラムボックスによって拘束されます。</figcaption></figure></p></section><section id="例9"><h4>例9</h4><blockquote>
+<p>カラムボックスが新しいブロックフォーマットのコンテキストを作成することを考えると、multicolコンテナの最初の子要素に設定されたトップマージンは、multicolコンテナの余白では崩れません。</p>
+</blockquote><p><figure><img src="./assets/img/fig04_margins-do-not-collapse.svg" alt="figure4 最初の段落の上の余白は崩れておらず、multicolコンテナ内の最初の行の上に1emの余白を残しています。"><figcaption>figure4 最初の段落の上の余白は崩れておらず、multicolコンテナ内の最初の行の上に1emの余白を残しています。</figcaption></figure></p><p>複数列レイアウト内に表示されるフロートは、フロートが表示される列ボックスを基準にして配置されます。</p></section><section id="例10"><h4>例10</h4><blockquote>
+<p>この例では、この CSS フラグメントは画像の表示を記述しています。</p>
+</blockquote><pre class="language-text"><code class="language-text">img { 
+  display: block. 
+  float: right.
+}</code></pre><blockquote>
+<p>HTMLでは、「鶏の足」という文末の後に画像が表示されます。</p>
+</blockquote><p><figure><img src="./assets/img/fig05_image-floated-in-column.svg" alt="figure5 画像は、表示されているカラムボックス内に浮かんでいます。"><figcaption>figure5 画像は、表示されているカラムボックス内に浮かんでいます。</figcaption></figure></p><p>ブロック軸の列ボックスでオーバーフローした内容が断片化され、次の列ボックスで継続されます。</p><blockquote>
+<p>注：無名のボックスである列ボックスは、絶対的に配置されたボックスの包含ブロックにはなりません。そのようなボックスのための包含ブロックを確立する position プロパティは、マルチコルコンテナに適用され、それが主ボックスとなります。</p>
+</blockquote></section><section id="例11"><h4>例11</h4><blockquote>
+<p>この例では、『multi-column container』は『position: relative』、これによって内容ブロックになります。画像は複数列コンテナの直接の子であり、『position: absolute』を持ちます。画像は、複数列コンテナの位置を取り、カラムボックスの位置ではなく、複数列コンテナの位置を取ります。</p>
+</blockquote><pre class="language-text"><code class="language-text">.container {
+  position: relative;
+  column-count: 3;
+}
+img {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+}</code></pre><p><figure><img src="./assets/img/fig06_column-not-containing-block.svg" alt="figue6 図は、絶対的に配置された画像がマルチコルコンテナを参照して配置され、カラムボックスではないことを示しています。"><figcaption>figue6 図は、絶対的に配置された画像がマルチコルコンテナを参照して配置され、カラムボックスではないことを示しています。</figcaption></figure></p><p>カラムボックスは、マルチコルコンテナのインラインベース方向に並べられ、マルチコルラインに配置されています。カラム幅は、インライン方向のカラムボックスの長さです。カラムの高さは、ブロック方向のカラムボックスの長さである。行内のすべてのカラムボックスは同じカラム幅を持ち、行内のすべてのカラムボックスは同じカラム高さを持つ。</p><p>マルチカラムコンテナ内の各マルチカラム行内では、隣接するカラムボックスはカラムギャップによって区切られており、その中にはカラムルールが含まれている場合があります。同じ複数列コンテナ内のすべての列ギャップは等しくなります。同じ複数列コンテナ内のすべての列規則が表示されている場合は、それもすべて等しくなります。</p><p>最も単純なケースでは、マルチカラムコンテナは1行のカラムのみを含み、各カラムの高さはマルチカラムコンテナのコンテンツボックスの使用済みの高さと同等になります。しかし、断片化またはスパナは、マルチカラムコンテナの内容を複数のマルチカラム行に分割することができます。</p><p>複数列コンテナがページ分割されている場合、各列の高さはページによって制約され、内容は次のページの列ボックスの新しい行に続けられます。</p><p>この効果は、スパング要素が複数列のコンテナを分割したときにも同じです：スパング要素の前の列は、その内容に合わせてバランスが取れて短くなります。スパニング要素の後の内容は、新しい行の後続の列ボックスに流れ込みます。</p></section><section id="例12"><h4>例12</h4><p><figure><img src="./assets/img/fig07_simple-span-example.svg" alt="figure7 A demonstration of how the spanning element divides the multicol container."><figcaption>figure7 A demonstration of how the spanning element divides the multicol container.</figcaption></figure></p><p>したがって、マルチカラムコンテナは、その内容が一連のマルチカラム行とマルチカラムスパナで構成された新しい独立した書式設定コンテキストを確立する通常のブロックコンテナです。各マルチカラム行は、そのカラムボックスのためにマルチカラム書式設定コンテキストを確立するブロックレベルボックスとして動作し、各スパナは、通常通り、その表示値に応じた型で独立した書式設定コンテキストを確立するブロックレベルボックスとして動作します。</p><p>入れ子になった複数列コンテナは許可されていますが、実装固有の制限がある場合があります。</p><blockquote>
+<p>注意：カラムボックスにプロパティ/値を設定することはできません。例えば、特定のカラムボックスの背景を設定することはできませんし、カラムボックスにはパディング、マージン、ボーダーの概念がありません。将来の仕様では、追加機能が追加される可能性があります。例えば、幅の異なるカラムや背景の異なるカラムがサポートされるかもしれません。</p>
+</blockquote><blockquote>
+<p>注意：ビューポートよりもカラムの高さが大きいマルチコルコンテナは、アクセシビリティの問題を引き起こす可能性があります。</p>
+</blockquote></section></section><section id="3-コラムの数と幅"><h3>3. コラムの数と幅</h3><p>複数カラムのコンテンツをレイアウトする際には、カラムの数と幅を見つけることが基本となります。これらのプロパティは、カラム数と幅を設定するために使用されます。</p><ul>
+<li>column-count</li>
+<li>column-width</li>
+</ul><p>3番目のプロパティであるcolumnsは、column-widthとcolumn-countの両方を設定する略式プロパティです。</p><p>明示的な列の区切り、内容、高さの制約などの他の要因が、実際の列の数や幅に影響を与えることがあります。</p></section><section id="31-列のサイス：column-widthプロパティ"><h3>3.1. 列のサイス：column-widthプロパティ</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>名前</th><th>列幅</th></tr></thead><tbody><tr><td>値</td><td>auto または 長さ『0〜∞』</td></tr><tr><td>初期値</td><td>auto</td></tr><tr><td>適用対象</td><td>block containers except table wrapper boxes</td></tr><tr><td>継承</td><td>なし</td></tr><tr><td>割合</td><td>該当なし</td></tr><tr><td>計算値</td><td>the keyword auto or 絶対値</td></tr><tr><td>正準順序</td><td>文法ごと</td></tr></tbody></table><p>このプロパティは、マルチコルコンテナ内のカラムの幅を記述します。</p><ul>
+<li>
+<p><strong>auto</strong>
+カラムの幅が他のプロパティ(例えば、自動ではない値を持っている場合は、カラムカウント)によって決定されることを意味します。</p>
+</li>
+<li>
+<p><strong>&#x3C;length [0,∞]></strong>
+最適なカラム幅を記述します。実際の列幅は、（利用可能なスペースを埋めるために）広くしてもよいし、（利用可能なスペースが指定された列幅よりも小さい場合のみ）狭くしてもよい。負の値は認められません。使用される値は、最小1pxにクランプされます。</p>
+</li>
+</ul><section id="例13"><h4>例13</h4><blockquote>
+<p>例えば、以下のスタイルシートを考えてみましょう。</p>
+</blockquote><pre class="language-text"><code class="language-text">div {
+  width: 100px;
+  column-width: 45px;
+  column-gap: 0;
+  column-rule: none;
+}</code></pre><blockquote>
+<p>幅100pxの要素の中には、幅45pxのカラムが2つ入る余地があります。空いたスペースを埋めるために、実際のカラムの幅は50pxに増加します。</p>
+</blockquote></section><section id="例14"><h4>例14</h4><blockquote>
+<p>また、このスタイルシートも考えてみてください。</p>
+</blockquote><pre class="language-text"><code class="language-text">div {
+  width: 40px;
+  column-width: 45px;
+  column-gap: 0;
+  column-rule: none;
+}</code></pre><blockquote>
+<p>空いているスペースは指定された列幅よりも小さくなるため、実際の列幅は小さくなります。</p>
+</blockquote><p>縦書きのテキストでもカラム幅が使えるようにするために、カラム幅とは、カラム内の行ボックスの長さを意味します。</p><blockquote>
+<p>注意：列幅を多少柔軟にする理由は、多くの画面サイズに対応できるスケーラブルなデザインを実現するためです。正確なカラム幅を設定するには、カラムギャップとマルチコルコンテナの幅（横書きテキストを想定）も指定する必要があります。</p>
+</blockquote></section></section></section></section>
 </body>
 </html>

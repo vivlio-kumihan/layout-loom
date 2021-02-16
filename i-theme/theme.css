@@ -145,7 +145,6 @@ pre[class*=language-] {
 h1,
 h2,
 h3 {
-  color: red;
   font-feature-settings: "palt", "calt";
 }
 
