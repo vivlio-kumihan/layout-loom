@@ -5,10 +5,27 @@
   place-content: center
   height: 80vh
   .box
+    position: relative
     width: 300px
     aspect-ratio: 1
-    // background-color: #333
+    &::before
+      position: absolute
+      top: 0
+      left: 0
+      content: ""
+      width: 100%
+      height: 100%
+      background-color: rgba(0, 0, 0, .7)
+      transform: scaleX(0)
+    &:hover::before
+      animation: shutter-one 1s ease forwards
+      transform-origin: left
+      @keyframes shutter-one 
+        100% 
+          transform: scaleX(1)  
     .bgimage
       height: 100%
       background: url(./data/img/130126-35770018.jpg) no-repeat center
       background-size: cover
+
+  // forwards => 実行後、最後のキーフレームの状態でストップ

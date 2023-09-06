@@ -46,8 +46,28 @@ footer small {
   height: 80vh;
 }
 .shutter-animation .box {
+  position: relative;
   width: 300px;
   aspect-ratio: 1;
+}
+.shutter-animation .box::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scaleX(0);
+}
+.shutter-animation .box:hover::before {
+  animation: shutter-one 1s ease forwards;
+  transform-origin: left;
+}
+@keyframes shutter-one {
+  100% {
+    transform: scaleX(1);
+  }
 }
 .shutter-animation .box .bgimage {
   height: 100%;
