@@ -43,34 +43,52 @@ footer small {
 .shutter-animation {
   display: grid;
   place-content: center;
-  height: 80vh;
 }
 .shutter-animation .box {
   position: relative;
   width: 300px;
   aspect-ratio: 1;
+  overflow: hidden;
 }
 .shutter-animation .box::before {
+  display: grid;
+  place-content: center;
   position: absolute;
   top: 0;
   left: 0;
-  content: "";
+  content: "hello, world!";
   width: 100%;
   height: 100%;
+  padding-bottom: 5%;
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.7);
   transform: scaleX(0);
-}
-.shutter-animation .box:hover::before {
-  animation: shutter-one 1s ease forwards;
   transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 10;
 }
-@keyframes shutter-one {
-  100% {
-    transform: scaleX(1);
-  }
+.shutter-animation .box.open::before {
+  transform: scaleX(1);
 }
 .shutter-animation .box .bgimage {
   height: 100%;
   background: url(./data/img/130126-35770018.jpg) no-repeat center;
   background-size: cover;
+  transition: 0.5s;
+}
+.shutter-animation .box.open .bgimage {
+  transform: scale(1.1);
+}
+
+.button-wrapper {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 20vh;
+}
+.button-wrapper button {
+  padding: 10px 30px;
+  color: #fff;
+  background-color: green;
+  border-radius: 9999px;
 }/*# sourceMappingURL=App.css.map */

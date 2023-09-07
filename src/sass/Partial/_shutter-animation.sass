@@ -3,29 +3,34 @@
 .shutter-animation
   display: grid
   place-content: center
-  height: 80vh
+
   .box
     position: relative
     width: 300px
     aspect-ratio: 1
+    overflow: hidden
     &::before
+      display: grid
+      place-content: center
       position: absolute
       top: 0
       left: 0
-      content: ""
+      content: "hello, world!"
       width: 100%
       height: 100%
+      padding-bottom: 5%
+      color: #fff
       background-color: rgba(0, 0, 0, .7)
       transform: scaleX(0)
-    &:hover::before
-      animation: shutter-one 1s ease forwards
       transform-origin: left
-      @keyframes shutter-one 
-        100% 
-          transform: scaleX(1)  
+      transition: transform .3s ease
+      z-index: 10
+    &.open::before
+      transform: scaleX(1)
     .bgimage
       height: 100%
       background: url(./data/img/130126-35770018.jpg) no-repeat center
       background-size: cover
-
-  // forwards => 実行後、最後のキーフレームの状態でストップ
+      transition: .5s
+    &.open .bgimage
+      transform: scale(1.1)

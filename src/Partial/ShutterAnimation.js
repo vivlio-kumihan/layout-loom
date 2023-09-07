@@ -1,12 +1,8 @@
-const ShutterAnimation = () => {
-  const box = document.querySelector('.box');
-  console.log(box)
-  // box.addEventListener('mouseenter', function() {
-  //   this.classList.add('hover')
-  // })
+const ShutterAnimation = ({ isShown }) => {
+
   return (
     <div className="shutter-animation">
-      <div className="box">
+      <div className={ `box ${isShown ? "open" : ""}`}>
         <div className="bgimage"></div>
       </div>
     </div>
