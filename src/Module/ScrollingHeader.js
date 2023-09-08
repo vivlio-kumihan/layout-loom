@@ -16,20 +16,19 @@ const StyleScrollingHeader = styled.header`
   color: #fff;
   background-color: green;
   z-index: 100;
+  transition: transform 0.5s, background-color 0.5s;
   &.scroll-down {
     transform: translateY(-100%);
-    background-color: #fff;
   }
   &.scroll-up {
-    transform: translateY(0);
-    background-color: #fff;
+    transform: translateY(0%);
   }
 `
 
 const Ul = styled.ul`
   display: flex;
   gap: 30px;
-`
+  `
 
 const Anc = styled.a`
   display: block;
@@ -45,7 +44,7 @@ const ScrollingHeader = () => {
     const toggleScrollDirection = () => {
       let scrollY = window.scrollY;
       if (scrollY > prevOffset && scrollY > 50) {
-        setScrollDirection('Down');
+        setScrollDirection('down');
       } else if (scrollY < prevOffset && scrollY > 50) {
         setScrollDirection('up');
       } else {
@@ -59,14 +58,14 @@ const ScrollingHeader = () => {
       return () => {
         window.removeEventListener('scroll', toggleScrollDirection)
       };
-    });
+    }, [prevOffset]);
     return scrollDirection;
   };
 
-  const scrollDirection = useScrollDirection()
+  const scrollDirection = useScrollDirection();
 
   return (
-    <StyleScrollingHeader className="{`scroll-${scrollDirection}`}">
+    <StyleScrollingHeader className={`scroll-${scrollDirection}`}>
         <h1>scrolling header</h1>
         <Ul role="navigation">
           <li>
