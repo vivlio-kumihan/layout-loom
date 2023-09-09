@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import styled from 'styled-components';
 
 // style定義 ///////////////////////////////////////
-const StyleScrollingHeader = styled.header`
+
+const StyledScrollingHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,7 +82,7 @@ const ScrollingHeader = () => {
   const scrollDirection = useScrollDirection();
 
   return (
-    <StyleScrollingHeader className={`scroll-${scrollDirection}`}>
+    <StyledScrollingHeader className={`scroll-${scrollDirection}`}>
         <h1>scrolling header</h1>
         <Ul role="navigation">
           <li>
@@ -97,7 +98,7 @@ const ScrollingHeader = () => {
             <Anc>Link 3</Anc>
           </li>
         </Ul>
-    </StyleScrollingHeader>
+    </StyledScrollingHeader>
   );
 };
 
@@ -145,7 +146,7 @@ export default ScrollingHeader;
 //   const scrollDirection = useScrollDirection();
 
 //   return (
-//     <StyleScrollingHeader className={`scroll-${scrollDirection}`}>
+//     <StyledScrollingHeader className={`scroll-${scrollDirection}`}>
 //         <h1>scrolling header</h1>
 //         <Ul role="navigation">
 //           <li>
@@ -161,7 +162,7 @@ export default ScrollingHeader;
 //             <Anc>Link 3</Anc>
 //           </li>
 //         </Ul>
-//     </StyleScrollingHeader>
+//     </StyledScrollingHeader>
 //   );
 // };
 
